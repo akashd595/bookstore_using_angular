@@ -1,0 +1,46 @@
+<app-header></app-header>
+<div class="main-container">
+    <div class="main-container-header">
+        <div class="books">books</div>
+        <div class="Sort">Sort</div>
+    </div>
+    <div class="book-list">
+    <!-- <div *ngFor="let book of bookList">
+        <mat-card class="matCard">
+            <mat-card-title class="bookImage">
+                <img src="{{book.bookImg}}" alt="bookPic" class="bookImage">
+            </mat-card-title>
+            <mat-card-content>
+                <div class="bookName bookItems">{{book.bookName}}</div>
+                <div class="bookAuthorName bookItems">By {{book.authorName}}</div>
+                <div class="bookPrice bookItems">Rs. {{book.bookPrice}}</div>
+                <div class="buttons">
+                    <div class="addToCart bookItems"><button mat-flat-button class="addCartButton"
+                            (click)="addToCart(book.bookId)" color="primary">ADD TO CART</button></div>
+                    <div class="addToCart bookItems"><button mat-flat-button class="wishListButton"
+                            color="primary">WISHLIST</button></div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div> -->
+    <div *ngFor="let book of allBooks">
+        <mat-card class="matCard">
+            <mat-card-title class="bookImage">
+                <img src="{{this.imgStarter+book.bookImg}}" alt="bookPic" class="bookImage">
+            </mat-card-title>
+            <mat-card-content>
+                <div class="bookName bookItems">{{book.bookName}}</div>
+                <div class="bookAuthorName bookItems">By {{book.authorName}}</div>
+                <div class="bookPrice bookItems">Rs. {{book.bookPrice}}</div>
+                <div class="buttons">
+                    <div class="addToCart bookItems"><button mat-flat-button class="addCartButton"
+                            (click)="addToCart(book.bookId)" color="primary">ADD TO CART</button></div>
+                    <div class="addToCart bookItems"><button mat-flat-button class="wishListButton"
+                            color="primary">WISHLIST</button></div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+</div>
+<app-footer></app-footer>

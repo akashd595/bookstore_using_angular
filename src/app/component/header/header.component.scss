@@ -1,0 +1,34 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+.header {
+    background-color: #A03037;
+    color: #ffffff;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.header-content {
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+}
+.search-bar{
+    margin-left: 10px;
+    height: 30px;
+    width: 70%;
+    border-color: #ffffff ;
+    appearance: none;
+}
