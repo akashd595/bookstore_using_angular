@@ -1,11 +1,22 @@
 <app-header></app-header>
 <div class="main-container">
     <div class="main-container-header">
-        <div class="books">books</div>
-        <div class="Sort">Sort</div>
+        <div class="books">books
+            <span class="books-count">(128 Items)</span>
+        </div>
+        <div class="sort">
+            <mat-form-field appearance="outline">
+                <mat-label>Sort By Relevance</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
     </div>
     <div class="book-list">
-    <!-- <div *ngFor="let book of bookList">
+        <!-- <div *ngFor="let book of bookList">
         <mat-card class="matCard">
             <mat-card-title class="bookImage">
                 <img src="{{book.bookImg}}" alt="bookPic" class="bookImage">
@@ -23,24 +34,46 @@
             </mat-card-content>
         </mat-card>
     </div> -->
-    <div *ngFor="let book of allBooks">
-        <mat-card class="matCard">
-            <mat-card-title class="bookImage">
-                <img src="{{this.imgStarter+book.bookImg}}" alt="bookPic" class="bookImage">
-            </mat-card-title>
-            <mat-card-content>
-                <div class="bookName bookItems">{{book.bookName}}</div>
-                <div class="bookAuthorName bookItems">By {{book.authorName}}</div>
-                <div class="bookPrice bookItems">Rs. {{book.bookPrice}}</div>
-                <div class="buttons">
-                    <div class="addToCart bookItems"><button mat-flat-button class="addCartButton"
-                            (click)="addToCart(book.bookId)" color="primary">ADD TO CART</button></div>
-                    <div class="addToCart bookItems"><button mat-flat-button class="wishListButton"
-                            color="primary">WISHLIST</button></div>
-                </div>
-            </mat-card-content>
-        </mat-card>
+        <div *ngFor="let book of allBooks">
+            <mat-card class="matCard">
+                <mat-card-title class="bookImage">
+                    <img src="{{this.imgStarter+book.bookImg}}" alt="bookPic" class="bookImage">
+                </mat-card-title>
+                <mat-card-content>
+                    <div class="bookName bookItems">{{book.bookName}}</div>
+                    <div class="bookAuthorName bookItems">By {{book.authorName}}</div>
+                    <div class="bookPrice bookItems">Rs. {{book.bookPrice}}</div>
+                    <!-- <div class="buttons">
+                        <div class="addToCart bookItems" *ngIf="flag==false">
+                            <button mat-flat-button class="addCartButton" (click)="addToCart(book.bookId)"
+                                color="primary">ADD TO CART</button>
+                        </div>
+                        <div class="addToCart bookItems" *ngIf="flag==false">
+                            <button mat-flat-button class="wishListButton" (click)="addToWishList()"
+                                color="primary">WISHLIST</button>
+                        </div>
+                        <div class="addToCart bookItems " *ngIf="flag==true">
+                            <button  class="wishListButton-main" (click)="addToWishList()"
+                                color="primary">WISHLIST</button>
+                        </div>
+                    </div> -->
+                    <div class="buttons" >
+                        <div class="addToCart bookItems" *ngIf="cartBooks.includes(book.bookId)==false">
+                            <button mat-flat-button class="addCartButton" (click)="addBookToCart(book.bookId)"
+                                color="primary">ADD TO CART</button>
+                        </div>
+                        <div class="addToCart bookItems" *ngIf="cartBooks.includes(book.bookId)==false">
+                            <button mat-flat-button class="wishListButton" (click)="addToWishList()"
+                                color="primary">WISHLIST</button>
+                        </div>
+                        <div class="addToCart bookItems " *ngIf="cartBooks.includes(book.bookId)==true">
+                            <button  class="wishListButton-main" (click)="addToWishList()"
+                                color="primary">ADDED TO CART</button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </div>
-</div>
 </div>
 <app-footer></app-footer>
