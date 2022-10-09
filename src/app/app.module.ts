@@ -17,6 +17,10 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { FooterComponent } from './component/footer/footer.component';
 import { OrderPlaceComponent } from './component/order-place/order-place.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatBadgeModule} from '@angular/material/badge';
+import { LoginComponent } from './component/login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,8 @@ import { OrderPlaceComponent } from './component/order-place/order-place.compone
     DashboardComponent,
     CartComponent,
     FooterComponent,
-    OrderPlaceComponent
+    OrderPlaceComponent,
+    LoginComponent
 
   ],
   imports: [
@@ -39,7 +44,10 @@ import { OrderPlaceComponent } from './component/order-place/order-place.compone
     MatCardModule,
     MatInputModule,
     HttpClientModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

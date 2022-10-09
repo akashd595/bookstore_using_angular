@@ -1,0 +1,210 @@
+.main-login-container {
+    background: #aaa7a7e0 0% 0% no-repeat padding-box;
+    // opacity: 0.31;
+    // width: 1366px;
+    // height: 768px;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// .main-login-card {
+//     top: 100px;
+//     left: 320px;
+//     width: 624px;
+//     height: 391px;
+//     /* UI Properties */
+//     // background: #F5F5F5 0% 0% no-repeat padding-box;
+//     border-radius: 21px;
+//     background: transparent url('../../../assets/2766594.png') 0% 0% no-repeat padding-box;
+//     opacity: 0.90;
+//     // padding-bottom: 50px;
+// }
+
+// .background-img {
+//     top: 237px;
+//     left: 373px;
+//     width: 245px;
+//     height: 245px;
+//     /* UI Properties */
+//     background: transparent url('../../../assets/2766594.png') 0% 0% no-repeat padding-box;
+//     opacity: 1;
+// }
+
+// .login-loader {
+//     top: 96px;
+//     left: 658px;
+//     width: 389px;
+//     height: 125px;
+//     /* UI Properties */
+//     background: #FFFFFF 0% 0% no-repeat padding-box;
+//     box-shadow: 0px 5px 15px #00000029;
+//     border: 1px solid #E4E4E4;
+//     border-radius: 6px;
+//     opacity: 1;
+// }
+
+// .back-img {
+//     margin-top: 1550px;
+//     margin-left: 50px;
+//     width: 245px;
+//     height: 245px;
+//     background-color: #000000;
+// }
+.main-div {
+    // background-color: red;
+    width: 778px;
+    height: 425px;
+    display: flex;
+    flex-direction: row;
+
+    .back-img {
+        // background-color: aqua;
+        width: 50%;
+
+        .img {
+            // background-color: red;
+            height: 391px;
+            margin: 17px -50px 17px 77px;
+            background: #F5F5F5 0% 0% no-repeat padding-box;
+            border-radius: 21px;
+            opacity: 1;
+
+            .pic {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-top: 52px;
+                padding-right: 53px;
+
+                .pic-src {
+                    height: 245px;
+                    border-radius: 122.5px;
+                }
+            }
+
+        }
+    }
+
+    .login-signup {
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 5px 15px #00000029;
+        border: 1px solid #E4E4E4;
+        border-radius: 6px;
+        opacity: 1;
+        width: 50%;
+
+        .tabs {
+            width: 100%;
+
+            .Email-Login {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+
+            }
+
+            .tab2 {
+                width: 50%;
+                // padding-left: 10px;
+            }
+        }
+    }
+}
+
+.login-section {
+    padding-top: 15px;
+}
+
+.email-details {
+    margin-top: 20px;
+    padding-left: 69px;
+    margin-bottom: 5px;
+
+    .emailId-label {
+        text-align: left;
+        font: normal normal normal 10px/13px Roboto;
+        letter-spacing: 0px;
+        color: #0A0102;
+        text-transform: capitalize;
+        opacity: 1;
+        margin-bottom: 2px;
+    }
+
+    // padding-top: 15px;
+    .emailId-input {
+        padding-top: 0px;
+
+        // margin-top: 20px;
+     
+
+        .example-full-width {
+            width: 250px;
+        }
+
+        .forget-pswd {
+            text-align: left;
+            font: normal normal normal 10px/13px Roboto;
+            letter-spacing: 0px;
+            color: #9D9D9D;
+            opacity: 1;
+            margin-left: 175px;
+            margin-top: 0px;
+            padding-top: 0px;
+        }
+    }
+}
+
+.addCartButton {
+    margin-top: 10px;
+    background: #A03037 0% 0% no-repeat padding-box;
+    border-radius: 2px;
+    opacity: 1;
+    font-size: 8px;
+    width: 252px;
+    height: 50px;
+    text-align: left;
+    font: normal normal normal 15px/20px Roboto;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+
+    /* font-weight: 200; */
+}
+
+.aa {
+    display: flex;
+    justify-content: center;
+}
+
+.signupButton {
+    // margin-top: 10px;
+    background: #A03037 0% 0% no-repeat padding-box;
+    border-radius: 2px;
+    opacity: 1;
+    font-size: 8px;
+    width: 252px;
+    height: 50px;
+    text-align: left;
+    font: normal normal normal 15px/20px Roboto;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+}
+
+.sign-up-name {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 5px;
+
+    input {
+        width: 100%;
+        height: 100%;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px solid #9D9D9D;
+        border-radius: 2px;
+        opacity: 1;
+    }
+}

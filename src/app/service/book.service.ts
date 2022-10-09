@@ -17,7 +17,7 @@ export class BookService {
     return this.http.get("http://localhost:8080/BookController/getAllBook");
   }
   getBookById(Id:any){
-    return this.http.get(this.baseUrl+"/getBookByID/"+Id)
+    return this.http.get(this.baseUrl+"/getBookByID/"+Id);
   }
 
 }

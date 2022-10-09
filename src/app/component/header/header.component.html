@@ -2,19 +2,21 @@
     <div class="header-content">
         <div> <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
 
-                <img src="../../../assets/education.svg" routerLink="/dashboard" alt="education logo">
+                <img src="../../../assets/Group 5.svg" routerLink="/dashboard" alt="education logo">
             </button>
-            <span>Bookstore</span>
+            <!-- <span>Bookstore</span> -->
         </div>
             <div class="search-bar">
-                <input class="search-bar" type="text" name="searchItem" id="searchItem" placeholder="Search...">
+                <input class="search-bar" type="text" name="searchItem" id="searchItem" placeholder=" Search...">
                 
             </div>
         
         <span class="example-spacer"></span>
-
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-            Cart <img src="../../../assets/supermarket.svg" alt="education logo">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" routerLink="/login">
+            <mat-icon>person_outline</mat-icon>
+        </button>
+        <button mat-icon-button matBadge="4" matBadgeOverlap="true" routerLink="/cart" class="example-icon" aria-label="Example icon-button with share icon">
+            Cart <img  src="../../../assets/supermarket.svg" alt="education logo">
         </button>
     </div>
 </mat-toolbar>
