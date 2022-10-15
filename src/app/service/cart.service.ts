@@ -23,4 +23,19 @@ export class CartService {
   getUserCartBook(token:string){
     return this.http.get("http://localhost:8080/cartController/bookIdList/"+token);
   }
+  getUserCart(token:string){
+    return this.http.get("http://localhost:8080/cartController/getUserCart/"+token);
+  }
+  removeBookFromCart(bookId:any, token:any){
+    return this.http.delete("http://localhost:8080/cartController/deleteBook/"+bookId+"?token="+token);
+  }
+  incrementBookQuantity(bookId:any, token:any){
+    return this.http.put("http://localhost:8080/cartController/incrementBookQuantity/"+bookId+"?token="+token,{});
+  }
+  decrementBookQuantity(bookId:any, token:any){
+    return this.http.put("http://localhost:8080/cartController/decrementBookQuantity/"+bookId+"?token="+token,{});
+  }
+  getCartBooks(token:any){
+    return this.http.get("http://localhost:8080/cartController/getAllBookFromCart/"+token);
+  }
 }

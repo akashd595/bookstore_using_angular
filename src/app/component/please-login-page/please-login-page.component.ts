@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-order-place',
-  templateUrl: './order-place.component.html',
-  styleUrls: ['./order-place.component.scss']
+  selector: 'app-please-login-page',
+  templateUrl: './please-login-page.component.html',
+  styleUrls: ['./please-login-page.component.scss']
 })
-export class OrderPlaceComponent implements OnInit {
-
+export class PleaseLoginPageComponent implements OnInit {
   Id: any;
   constructor(private route: ActivatedRoute) { }
 

@@ -1,4 +1,4 @@
-.footer{
+.footer {
     margin-top: 140px;
     background-color: #2E1D1E;
     color: #FFFFFF;
@@ -7,4 +7,8 @@
     // justify-content: center;
     align-items: center;
     padding-left: 170px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
