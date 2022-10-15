@@ -19,5 +19,7 @@ export class UserDataService {
   login(loginData:any){
     return this.http.post(this.baseUrl+"/toLoginUser/",loginData);
   }
-  
+  getUserInfo(token:string){
+    return this.http.get(this.baseUrl+"/findUserByID/"+token);
+  }
 }

@@ -6,17 +6,75 @@
             </button>
             <!-- <span>Bookstore</span> -->
         </div>
-            <div class="search-bar">
-                <input class="search-bar" type="text" name="searchItem" id="searchItem" placeholder=" Search...">
-                
-            </div>
-        
+        <div class="search-bar">
+            <input class="search-bar" type="text" name="searchItem" id="searchItem" placeholder=" Search...">
+
+        </div>
+
         <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" routerLink="/login">
-            <mat-icon>person_outline</mat-icon>
-        </button>
-        <button mat-icon-button matBadge="4" matBadgeOverlap="true" routerLink="/cart" class="example-icon" aria-label="Example icon-button with share icon">
-            Cart <img  src="../../../assets/supermarket.svg" alt="education logo">
+        <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" routerLink="/login"> -->
+        <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" [matMenuTriggerFor]="appMenu">
+            
+            <mat-icon >person_outline</mat-icon>
+
+
+        </button> -->
+
+        <div *ngIf="isLogedIn">
+            <div class="profile-label">
+                <div class="profile-icon">
+                    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"
+                        [matMenuTriggerFor]="appMenu">
+                        <mat-icon>person_outline</mat-icon>
+                    </button>
+                </div>
+                <div class="label">{{userData.fullName}}</div>
+            </div>
+            <mat-menu #appMenu="matMenu" class="main-con">
+                <div class="main-container">
+
+                    <div><span class="name-position-label">Hello {{userData.fullName}}</span></div>
+                    <div class="login-Profile-label-div"><mat-icon>person_outline</mat-icon><span class="login-profile-label"> Profile</span></div>
+                    <div class="login-Profile-label-div"><mat-icon>business_center</mat-icon><span class="login-profile-label">My Order</span></div>
+                    <div class="login-Profile-label-div"><mat-icon>favorite_border</mat-icon><span class="login-profile-label"> Wishlist</span></div>
+
+                    <div class="name-position">
+                        <button mat-raised-button (click)="logout()" class="login-btn">LOGOUT</button>
+                    </div>
+                </div>
+
+
+            </mat-menu>
+        </div>
+
+        <div *ngIf="isLogedIn==false">
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"
+                [matMenuTriggerFor]="appMenu">
+                <mat-icon>person_outline</mat-icon>
+            </button>
+
+            <mat-menu #appMenu="matMenu" class="main-con">
+                <div class="main-container">
+
+                    <div><span class="name-position-label">Welcome</span></div>
+                    <div class="login-welcome-label-div"><span class="login-welcome-label">To acsess account and manage orders</span></div>
+
+                    <div class="name-position">
+                        <button mat-raised-button (click)="toLogIn()" class="login-btn">LOGIN/SIGNUP</button>
+                    </div>
+                </div>
+                <div class="hr-line">
+                    <hr class="hr-line">
+                </div>
+                <div class="login-welcome-label-div"><span class="login-welcome-label">My Cart</span></div>
+                <div class="login-welcome-label-div"><span class="login-welcome-label">Wishlist</span></div>
+
+            </mat-menu>
+        </div>
+
+        <button mat-icon-button matBadge="4" matBadgeOverlap="true" (click)="cartClick()" class="example-icon"
+            aria-label="Example icon-button with share icon">
+            Cart <img src="../../../assets/supermarket.svg" alt="education logo">
         </button>
     </div>
 </mat-toolbar>

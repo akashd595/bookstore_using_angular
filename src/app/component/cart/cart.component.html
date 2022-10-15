@@ -1,20 +1,24 @@
 <app-header></app-header>
 <div class="cart-container">
     <mat-card class="book-details">
-        <div class="cartNumber" *ngFor="let bookdetail of cb">
-            <div class="my-cart-title"><span class="my-cart-title">My cart</span></div>
-
+        <div class="my-cart-title"><span class="my-cart-title">My cart</span></div>
+        <div class="cartNumber" *ngFor="let bookdetail of cb2,let i = index">
+            
             <div class="my-cart-details">
-                <div class="order-pic"><img [src]="bookImage" alt="image" class="Orderpic"></div>
+                <!-- <div class="order-pic"><img [src]="bookImage" alt="image" class="Orderpic"></div> -->
+                <div class="order-pic"><img [src]="bookdetail.bookImg" alt="image" class="Orderpic"></div>
+
                 <div class="order-details">
                     <div class="order-book-name">{{bookdetail.bookName}}</div>
                     <div class="order-book-author-name">by {{bookdetail.authorName}}</div>
+                    <!-- <div class="order-book-price">Rs. {{bookdetail.bookPrice * bookQuantityList[i]}}</div> -->
                     <div class="order-book-price">Rs. {{bookdetail.bookPrice}}</div>
+
                     <div class="book-quantity-div">
-                        <button class="decrease-btn" (click)="reduceCount()">-</button>
-                        <input class="quantity-box" type="text" value="1" [(ngModel)]="bookCount" />
-                        <button class="increase-btn" (click)="increaseCount()">+</button>
-                        <div class="remove-btn" (click)="makeCountZero()">Remove</div>
+                        <button class="decrease-btn" (click)="reduceCount(bookdetail.bookId)">-</button>
+                        <input class="quantity-box" type="text" value="1" [(ngModel)]="bookQuantityList[i]" />
+                        <button class="increase-btn" (click)="increaseCount(bookdetail.bookId)">+</button>
+                        <div class="remove-btn" (click)="removeBookFromUserCart(bookdetail.bookId)">Remove</div>
                     </div>
                 </div>
             </div>
@@ -30,13 +34,13 @@
             <div class="name">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Name</mat-label>
-                    <input matInput placeholder="Name" value="">
+                    <input matInput placeholder="Name" value="" >
                 </mat-form-field>
             </div>
             <div class="phoneNumber">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Phone Number</mat-label>
-                    <input matInput placeholder="Phone Number" value="">
+                    <input matInput placeholder="Phone Number" value="" [(ngModel)]="ordersDetail.phoneNumber">
                 </mat-form-field>
             </div>
         </div>
@@ -44,33 +48,33 @@
             <div class="name">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>pincode</mat-label>
-                    <input matInput placeholder="Pincode" value="">
+                    <input matInput placeholder="Pincode" value="" [(ngModel)]="ordersDetail.pincode">
                 </mat-form-field>
             </div>
             <div class="phoneNumber">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Locality</mat-label>
-                    <input matInput placeholder="Locality" value="">
+                    <input matInput placeholder="Locality" value="" >
                 </mat-form-field>
             </div>
         </div>
         <div class="address">
             <mat-form-field class="example-full-width-textarea" appearance="outline">
                 <mat-label>Address</mat-label>
-                <textarea matInput placeholder="Address"></textarea>
+                <textarea matInput placeholder="Address" [(ngModel)]="ordersDetail.address"></textarea>
             </mat-form-field>
         </div>
         <div class="name-phoneNumber">
             <div class="name">
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>City/Town</mat-label>
-                    <input matInput placeholder="City/Town" value="">
+                    <input matInput placeholder="City/Town" value="" [(ngModel)]="ordersDetail.city">
                 </mat-form-field>
             </div>
             <div class="phoneNumber">
                 <mat-form-field class="example-full-width" appearance="outline">
-                    <mat-label>Landmark</mat-label>
-                    <input matInput placeholder="Landmark" value="">
+                    <mat-label>State</mat-label>
+                    <input matInput placeholder="Landmark" value="" [(ngModel)]="ordersDetail.state">
                 </mat-form-field>
             </div>
         </div>
@@ -90,7 +94,23 @@
     <!-- Order Detail -->
     <mat-card class="book-details" *ngIf="orderFlag == true">
 
-        <div class="my-cart-title"><span class="my-cart-title">Order Summary</span></div>
+        <div class="cartNumber" *ngFor="let bookdetail of cb2,let i = index">
+            
+            <div class="my-cart-details">
+                <!-- <div class="order-pic"><img [src]="bookImage" alt="image" class="Orderpic"></div> -->
+                <div class="order-pic"><img [src]="imgStarter+bookdetail.bookImg" alt="image" class="Orderpic"></div>
+    
+                <div class="order-details">
+                    <div class="order-book-name">{{bookdetail.bookName}}</div>
+                    <div class="order-book-author-name">by {{bookdetail.authorName}}</div>
+                    <!-- <div class="order-book-price">Rs. {{bookdetail.bookPrice * bookQuantityList[i]}}</div> -->
+                    <div class="order-book-price">Rs. {{bookdetail.bookPrice * bookQuantityList[i]}} </div>
+    
+                    
+                </div>
+            </div>
+        </div>
+        <!-- <div class="my-cart-title"><span class="my-cart-title">Order Summary</span></div>
 
         <div class="my-cart-details">
             <div class="order-pic"><img [src]="bookImage" alt="image" class="Orderpic"></div>
@@ -99,10 +119,11 @@
                 <div class="order-book-author-name">by {{bookdetail.authorName}}</div>
                 <div class="order-book-price">Rs. {{bookdetail.bookPrice}}</div>
             </div>
-        </div>
-        <div class="cart-order"><button mat-flat-button color="primary" routerLink="/place-order">Place Order</button>
-        </div>
+        </div>-->
+        <div class="cart-order"><button mat-flat-button color="primary"  (click)="orderPlaceDetail()" >Place Order</button>
+        </div> 
     </mat-card>
+   
 
     <mat-card class="book-details" *ngIf="orderFlag == false">
 

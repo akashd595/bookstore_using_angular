@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookModel } from 'src/app/model/bookModel';
 import { BookService } from 'src/app/service/book.service';
@@ -34,13 +35,26 @@ export class DashboardComponent implements OnInit {
   token:any="";
   cartBooks:Array<any> = [];
   cartBookCount:any=0;
-  constructor(private router: Router, private route:ActivatedRoute, private bookService: BookService, private cartService:CartService) { }
+  Message:string="";
+  constructor(private _snackBar:MatSnackBar, private router: Router, private route:ActivatedRoute, private bookService: BookService, private cartService:CartService) { }
 
   ngOnInit(): void {
     // this.bookContentLoaded();
+    console.log("+++inside ngOnIt  ++++");
+    
     this.getAllBooks();
-    this.getBookFromCart();
+    // this.getBookFromCart();
   }
+  // ngDoCheck(){
+  //   console.log("DO CHECK")
+  //   if(!localStorage.getItem("token")){
+
+  //     // this.getAllBooks();
+  //     // window.location.reload();
+  //     // this.getBookFromCart();
+  //   }
+  // }
+
 
   getAllBooks(){
     // console.log();
@@ -49,26 +63,34 @@ export class DashboardComponent implements OnInit {
       // this.allBooks = response;
     console.log(response);
     this.allBooks = response.data;
-    
+    this.getBookFromCart();
     });
+   
   }
 
   addToCart(bookId:number){
     this.router.navigate(['cart',bookId]);
   }
-  
+
   addBookToCart(bookId:number){
-    if(localStorage.getItem("token") != null){
+    if(localStorage.getItem("token")){
       this.token = localStorage.getItem("token");
       this.cartService.addToCart(bookId, this.token).subscribe((response:any) => {
         console.log("++++++++++++++++");
         this.getBookFromCart();
+        this._snackBar.open("Book Added To Cart","",{
+          duration:3000
+        });
       });
+    }else{
+      // this.router.navigate(["please-login"]);
+      console.log("Navigate");
+      this.router.navigateByUrl("/pleaseLogin");
     }
   }
 
   getBookFromCart(){
-    if(localStorage.getItem("token") != null){
+    if(localStorage.getItem("token")){
       this.token = localStorage.getItem("token");
       this.cartService.getUserCartBook(this.token).subscribe((response:any) => {
         this.cartBooks = response.data;
@@ -86,6 +108,21 @@ export class DashboardComponent implements OnInit {
     // }
     // console.log(" The flag is "+this.flag);
   }
+
+
+
+    receiveMessage($event:any) {  
+        this.Message = $event  
+        if(this.Message == "logout"){
+          console.log("Inside the receive");
+          // window.location.reload();
+          this.ngOnInit();
+          // this.getAllBooks();
+        }
+    }
+
+
+
 
   foods: Food[] = [
     {value: 'steak-0', viewValue: 'Price: Low to High'},

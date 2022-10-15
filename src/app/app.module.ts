@@ -21,6 +21,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatBadgeModule} from '@angular/material/badge';
 import { LoginComponent } from './component/login/login.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { PleaseLoginPageComponent } from './component/please-login-page/please-login-page.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,8 @@ import { LoginComponent } from './component/login/login.component';
     CartComponent,
     FooterComponent,
     OrderPlaceComponent,
-    LoginComponent
+    LoginComponent,
+    PleaseLoginPageComponent
 
   ],
   imports: [
@@ -47,7 +52,10 @@ import { LoginComponent } from './component/login/login.component';
     MatGridListModule,
     MatSelectModule,
     MatTabsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatMenuModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

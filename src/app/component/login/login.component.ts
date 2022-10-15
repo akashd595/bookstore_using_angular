@@ -1,5 +1,6 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginModel } from 'src/app/model/loginModel';
 import { UserDataModel } from 'src/app/model/userDataModel';
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   inputVar:any="";
   eyeFlag:boolean = false;
   token:string="";
-  constructor(private router:Router, private route:ActivatedRoute, private userService:UserDataService) { }
+  constructor(private router:Router, private route:ActivatedRoute, private userService:UserDataService, private _snackBar:MatSnackBar) { }
   akashToken:string="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb250YWN0X2lkIjo5fQ.v_IYovTZWRz4XCFGDLpu8SLTaDRGQBKOhkkN2kBRqJU";
   umeshToken:string="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb250YWN0X2lkIjoxMH0.5RnP9FXVjl67H9k-EmsgChA5HFGSMv2ENM67LQlYAEY";
   // constructor(){}
@@ -46,24 +47,34 @@ export class LoginComponent implements OnInit {
     this.userService.addUser(this.userData).subscribe((response:any) => {
       this.token = response.data;
       console.log("token is --->>>",this.token);
+      this._snackBar.open("SignUp Successful","",{
+        duration:3000
+      });
     });
     this.router.navigate(['dashboard']);
   }
 
+
+  // earlier one
   toLogin(){
     console.log("Login--> ");
     this.userService.tologin(this.umeshToken, this.inputVar).subscribe((response:any) => {
       console.log("Login Status --> "+response.data);
+      this.ngOnInit();
     })
     this.router.navigate(['dashboard']);
   }
 
+  // in use
   toLoginUserData(loginData:any){
     this.userService.login(loginData).subscribe((response:any) => {
       console.log("response is ",response);
       localStorage.setItem("token", response.data);
+      this._snackBar.open("Login Successful","",{
+        duration:3000
+      });
       this.router.navigate(["dashboard"]);
     });
   }
-  
+
 }
